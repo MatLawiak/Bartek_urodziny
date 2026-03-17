@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Panel Bartka 🎂</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-page">
+
+<!-- ============================================================
+     EKRAN LOGOWANIA
+     ============================================================ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+
+    <!-- Zdjęcie Bartka + tort -->
+    <img
+      src="zdj%C4%99cia/zdj%C4%99cia/IMG_0407.JPG"
+      alt="Bartek"
+      class="login-avatar"
+      onerror="this.style.display='none'; document.querySelector('.login-cake').style.display='block';"
+    />
+    <div class="login-cake" style="display:none;">🎂</div>
+
+    <h2>Panel Administratora</h2>
+    <p>
+      Hej Bartku! 🎉<br>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">
+        Psst — hasło jest prawie tak oczywiste jak to,<br>że kończysz 40&nbsp;😄
+      </span>
+    </p>
+
+    <form class="login-form" id="loginForm" novalidate>
+      <input
+        type="text"
+        id="loginUser"
+        name="username"
+        placeholder="Login"
+        autocomplete="username"
+        value="Bartek"
+      />
+      <input
+        type="password"
+        id="loginPass"
+        name="password"
+        placeholder="Hasło"
+        autocomplete="current-password"
+        autofocus
+      />
+      <div class="login-error" id="loginError"></div>
+      <button type="submit" class="btn btn-primary btn-large">
+        Wejdź do panelu 🚀
+      </button>
+    </form>
+
+    <p style="margin-top: 1.5rem; font-size: 0.8rem;">
+      <a href="index.html" style="color: var(--text-muted); text-decoration: underline;">
+        ← Wróć na stronę główną
+      </a>
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     DASHBOARD
+     ============================================================ -->
+<div class="admin-dashboard" id="adminDashboard">
+
+  <!-- Header -->
+  <header class="admin-header">
+    <img
+      src="zdj%C4%99cia/zdj%C4%99cia/IMG_0407.JPG"
+      alt="Bartek"
+      class="admin-header-avatar"
+      onerror="this.style.display='none';"
+    />
+    <h1>Panel Bartka <span>🎂 40</span></h1>
+    <span style="flex:1"></span>
+    <button class="btn-refresh" id="btnRefresh" title="Odśwież dane">🔄 Odśwież</button>
+    <button class="btn-logout"  id="btnLogout"  title="Wyloguj">Wyloguj</button>
+  </header>
+
+  <!-- Body -->
+  <main class="admin-body">
+
+    <!-- Demo banner (ukryty gdy jest backend) -->
+    <div class="demo-banner" id="demoBanner" style="display:none;">
+      <strong>⚙️ Tryb demo</strong> — brak skonfigurowanego backendu.
+      Dane są przykładowe. Skonfiguruj
+      <a href="backend/apps-script.gs">Google Apps Script</a> i wklej URL do
+      <code style="color: var(--gold);">js/config.js</code>.
+    </div>
+
+    <!-- Bartek party banner -->
+    <div class="admin-party-banner">
+      <img
+        src="zdj%C4%99cia/zdj%C4%99cia/IMG_0407.JPG"
+        alt="Bartek"
+        class="admin-party-avatar"
+        onerror="this.style.fontSize='3rem'; this.outerHTML='<span style=\'font-size:3rem\'>🎂</span>';"
+      />
+      <div class="admin-party-text">
+        <h3>Bartek, masz <span style="color:var(--gold)">40 lat</span>! 🥳</h3>
+        <p>
+          Tu widzisz kto potwierdził obecność na Twojej imprezie.
+          Sala Lux Korona, 8 maja 2026 o 19:00.
+        </p>
+      </div>
+    </div>
+
+    <!-- Statystyki -->
+    <div class="admin-stats">
+
+      <div class="stat-card highlight">
+        <div class="stat-number" id="statPeople">—</div>
+        <div class="stat-label">Osób łącznie</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" id="statRSVPs">—</div>
+        <div class="stat-label">Potwierdzeń</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-number" id="statSpotsLeft">—</div>
+        <div class="stat-label">Wolnych miejsc</div>
+      </div>
+
+    </div>
+
+    <!-- Tabela -->
+    <div class="table-header">
+      <h2>Lista gości</h2>
+      <div style="display: flex; gap: 0.75rem;">
+        <button class="btn-csv" id="btnCSV">⬇️ Eksportuj CSV</button>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border);">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 3rem;">#</th>
+            <th>Imię i nazwisko</th>
+            <th>+ Towarzysze</th>
+            <th>Łącznie</th>
+            <th>Data potwierdzenia</th>
+          </tr>
+        </thead>
+        <tbody id="rsvpTableBody">
+          <tr>
+            <td colspan="5" style="text-align:center; color: var(--text-muted); padding: 2rem;">
+              Ładowanie...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+
+<script src="js/config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

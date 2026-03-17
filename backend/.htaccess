@@ -1,0 +1,5 @@
+# Chroń plik z danymi gości przed bezpośrednim dostępem przez przeglądarkę
+<Files "rsvp_data.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
