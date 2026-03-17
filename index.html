@@ -3,42 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Strona prywatna — niewidoczna dla wyszukiwarek -->
   <meta name="robots" content="noindex, nofollow" />
-  <title>Bartek kończy 40! 🎉</title>
+  <title>Urodziny Bartka 40+ 🎉</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
 <!-- ============================================================
-     HERO
+     HERO — statyczne tło
      ============================================================ -->
 <section id="hero">
-
-  <!-- Slider tło -->
-  <div class="hero-slider" id="heroSlider"></div>
-
-  <!-- Gradient overlay -->
   <div class="hero-overlay"></div>
-
-  <!-- Wielka "40" w tle -->
   <div class="hero-bg-number" aria-hidden="true">40</div>
 
-  <!-- Treść hero -->
   <div class="hero-content">
     <div class="hero-badge">✦ Jubileusz ✦</div>
 
     <h1 class="hero-title">
-      BARTEK<br>
-      KOŃCZY<br>
-      <em>Czterdzieści</em>
+      URODZINY<br>
+      BARTKA<br>
+      <em>40+</em>
     </h1>
 
     <div class="hero-date-bar">
@@ -51,9 +39,6 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
   </div>
-
-  <!-- Dots -->
-  <div class="slider-dots" id="sliderDots" aria-hidden="true"></div>
 </section>
 
 
@@ -96,41 +81,72 @@
 
 
 <!-- ============================================================
-     ZAPROSZENIE
+     ZAPROSZENIE — tekst + zdjęcie obok
      ============================================================ -->
 <section id="zaproszenie" class="section">
   <div class="container">
+    <div class="invite-layout">
 
-    <div class="section-label reveal">Zaproszenie</div>
+      <!-- Lewa kolumna: tekst -->
+      <div class="invite-col-text">
+        <div class="section-label reveal">Zaproszenie</div>
+        <h2 class="section-title reveal reveal-delay-1">No nie dało się ukryć.</h2>
 
-    <h2 class="section-title reveal reveal-delay-1">No nie dało się ukryć.</h2>
+        <div class="invite-text">
+          <p class="reveal reveal-delay-1">
+            Bartek przez całe życie z mistrzowską finezją omijał okrągłe urodziny.
+            Osiemnastka? Cicho sza. Trzydziestka? Żadnych oficjalnych doniesień.
+            Ale <strong>czterdziestka to już zupełnie inna liga</strong> —
+            tu nie ma gdzie uciec, schować się ani udawać, że się nie widzi.
+          </p>
+          <p class="reveal reveal-delay-2">
+            Więc zamiast kryć się pod kołdrą z filmem i udawać, że ten dzień
+            nie istnieje, Bartek postanowił to świętować jak należy —
+            <strong>z pompą, z Wami i z dobrym winem</strong>
+            (bez selekcji — każdy mile widziany, każdy kieliszek zaliczony).
+          </p>
+          <p class="reveal reveal-delay-2">
+            Natalia i Bartek zapraszają Was na wieczór, który nie zostanie
+            zapamiętany jako <em>"ta impreza z czterdziestką"</em>, ale jako
+            <strong>ta impreza roku</strong>. Przyjdźcie.
+            Bo jeśli nie — Bartek będzie to wyciągał przez następne czterdzieści lat.
+            I to nie jest groźba. To jest prognoza.
+          </p>
+        </div>
 
-    <div class="invite-text">
-      <p class="reveal reveal-delay-1">
-        Bartek przez całe życie z mistrzowską finezją omijał okrągłe urodziny.
-        Osiemnastka? Cicho sza. Trzydziestka? Żadnych oficjalnych doniesień.
-        Ale <strong>czterdziestka to już zupełnie inna liga</strong> —
-        tu nie ma gdzie uciec, schować się ani udawać, że się nie widzi.
-      </p>
-      <p class="reveal reveal-delay-2">
-        Więc zamiast kryć się pod kołdrą z filmem i udawać, że ten dzień
-        nie istnieje, Bartek postanowił to świętować jak należy —
-        <strong>z pompą, z Wami i z dobrym winem</strong>
-        (bez selekcji — każdy mile widziany, każdy kieliszek zaliczony).
-      </p>
-      <p class="reveal reveal-delay-2">
-        Natalia i Bartek zapraszają Was na wieczór, który nie zostanie
-        zapamiętany jako <em>"ta impreza z czterdziestką"</em>, ale jako
-        <strong>ta impreza roku</strong>. Przyjdźcie.
-        Bo jeśli nie — Bartek będzie to wyciągał przez następne czterdzieści lat.
-        I to nie jest groźba. To jest prognoza.
-      </p>
+        <div class="invite-signature reveal reveal-delay-3">
+          — Bartek &amp; Natalia 🥂
+        </div>
+      </div>
+
+      <!-- Prawa kolumna: zdjęcie Gemini -->
+      <div class="invite-col-img reveal reveal-delay-2">
+        <img
+          src="zdj%C4%99cia/zdj%C4%99cia/Gemini_Generated_Image_eag3kveag3kveag3.png"
+          alt="Urodziny Bartka 40"
+          class="invite-photo"
+        />
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <div class="invite-signature reveal reveal-delay-3">
-      — Bartek &amp; Natalia 🥂
-    </div>
 
+<!-- ============================================================
+     GALERIA — slider ze zdjęciami
+     ============================================================ -->
+<section id="galeria" class="section section-dark">
+  <div class="container">
+    <div class="section-label reveal">Wspomnienia</div>
+    <h2 class="section-title reveal reveal-delay-1">Droga do czterdziestki</h2>
+  </div>
+
+  <div class="gallery-slider-wrap reveal reveal-delay-2">
+    <div class="gallery-slider" id="heroSlider"></div>
+    <button class="gallery-btn gallery-btn-prev" id="slidePrev" aria-label="Poprzednie">&#8249;</button>
+    <button class="gallery-btn gallery-btn-next" id="slideNext" aria-label="Następne">&#8250;</button>
+    <div class="slider-dots" id="sliderDots" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -138,7 +154,7 @@
 <!-- ============================================================
      SZCZEGÓŁY
      ============================================================ -->
-<section id="szczegoly" class="section section-dark">
+<section id="szczegoly" class="section">
   <div class="container">
 
     <div class="section-label reveal">Szczegóły</div>
@@ -159,7 +175,7 @@
         <div class="detail-main">Sala Lux Korona</div>
         <div class="detail-sub">
           Beton Haus w Parku Wilsona<br>
-          Warszawa, Żoliborz<br>
+          ul. Śniadeckich 12B, Poznań<br>
           <br>
           <a href="https://betonhaus.wparkuwilsona.pl" target="_blank" rel="noopener"
              style="color: var(--gold); text-decoration: underline; font-size: 0.85rem;">
@@ -173,7 +189,7 @@
         <h3>Parking</h3>
         <div class="detail-main">Bez stresu</div>
         <div class="detail-sub">
-          Bezpłatny parking wzdłuż ul. Dygasińskiego i przy Parku Wilsona.
+          Bezpłatny parking przy ul. Śniadeckich i wokół Parku Wilsona.
           Możliwość podjazdu pod wejście.<br><br>
           <strong style="color: var(--gold-light);">Planujecie pić?</strong><br>
           Uber/Bolt to mądry wybór&nbsp;😉
@@ -188,20 +204,20 @@
 <!-- ============================================================
      DOJAZD
      ============================================================ -->
-<section id="dojazd" class="section">
+<section id="dojazd" class="section section-dark">
   <div class="container">
 
     <div class="section-label reveal">Dojazd</div>
     <h2 class="section-title reveal reveal-delay-1">Jak tu dotrzeć?</h2>
     <p class="section-intro reveal reveal-delay-1">
-      Beton Haus leży w pięknym Parku Wilsona na Żoliborzu.
-      Poniżej mapa i przyciski nawigacji — zero wymówek&nbsp;🗺️
+      Beton Haus mieści się przy ul. Śniadeckich 12B w Poznaniu, w Parku Wilsona.
+      Poniżej mapa — zero wymówek&nbsp;🗺️
     </p>
 
     <div class="map-wrapper reveal reveal-delay-2">
       <iframe
-        src="https://maps.google.com/maps?q=Beton+Haus+w+Parku+Wilsona+Warszawa&output=embed&hl=pl&z=16"
-        title="Beton Haus w Parku Wilsona — mapa"
+        src="https://maps.google.com/maps?q=%C5%9Aniadeckich+12B+Pozna%C5%84&output=embed&hl=pl&z=16"
+        title="Beton Haus — ul. Śniadeckich 12B, Poznań"
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
@@ -209,16 +225,60 @@
     </div>
 
     <div class="map-buttons reveal reveal-delay-3">
-      <a href="https://www.google.com/maps/search/Beton+Haus+w+Parku+Wilsona+Warszawa"
+      <a href="https://www.google.com/maps/search/%C5%9Aniadeckich+12B+Pozna%C5%84"
          target="_blank" rel="noopener"
          class="btn btn-primary">
         🗺️ Nawiguj do miejsca
       </a>
-      <a href="https://www.google.com/maps/dir//Beton+Haus+w+Parku+Wilsona+Warszawa"
+      <a href="https://www.google.com/maps/dir//%C5%9Aniadeckich+12B+Pozna%C5%84"
          target="_blank" rel="noopener"
          class="btn btn-secondary">
         📍 Pobierz lokalizację
       </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FUNDACJA BIEGUSIEM
+     ============================================================ -->
+<section id="fundacja" class="section">
+  <div class="container">
+
+    <div class="fundacja-card reveal">
+      <div class="fundacja-inner">
+
+        <div class="fundacja-icon" aria-hidden="true">🏃</div>
+
+        <div class="fundacja-text">
+          <div class="section-label" style="margin-bottom: 0.5rem;">Zamiast prezentu</div>
+          <h2 class="fundacja-title">Mamy do Was prośbę 💛</h2>
+          <p>
+            Jeżeli planujecie kupić nam jakiś prezent — rozważcie zamiast tego
+            <strong>wpłatę na Fundację Biegusiem</strong>.
+            Razem sfinansujemy kolejne
+            <strong>Wyprawki Na Dobry Start</strong> dla rodzin zastępczych.
+          </p>
+          <p style="margin-top: 0.75rem; color: var(--text-muted);">
+            Każda złotówka trafia bezpośrednio do dzieci, które potrzebują
+            wsparcia na nowy etap życia. To prezent, który naprawdę zmienia coś w świecie 🌍
+          </p>
+
+          <div class="fundacja-buttons">
+            <a href="https://biegusiem.pl" target="_blank" rel="noopener"
+               class="btn btn-primary">
+              💛 Wpłać na Fundację Biegusiem
+            </a>
+            <a href="https://biegusiem.pl" target="_blank" rel="noopener"
+               class="btn btn-secondary">
+              Dowiedz się więcej ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -300,16 +360,13 @@
      ============================================================ -->
 <footer>
   <p>Zrobione z <span class="footer-heart">♥</span> przez Natalię dla Bartka</p>
-  <p>8 maja 2026 · Beton Haus w Parku Wilsona · Warszawa</p>
+  <p>8 maja 2026 · Beton Haus w Parku Wilsona · ul. Śniadeckich 12B, Poznań</p>
   <p style="margin-top: 1rem; font-size: 0.78rem;">
     Strona prywatna — dostęp wyłącznie dla zaproszonych gości
   </p>
 </footer>
 
 
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>

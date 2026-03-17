@@ -2,8 +2,9 @@
 //  BARTEK 40 — main.js
 // ============================================================
 
-/* ---- PHOTOS (slider) ---- */
+/* ---- PHOTOS (slider) — Gemini jako pierwsze ---- */
 const PHOTOS = [
+  'zdj%C4%99cia/zdj%C4%99cia/Gemini_Generated_Image_eag3kveag3kveag3.png',
   'zdj%C4%99cia/zdj%C4%99cia/IMG_0407.JPG',
   'zdj%C4%99cia/zdj%C4%99cia/85A4FE13-3A05-4E43-94B3-47E72FED9B75.JPG',
   'zdj%C4%99cia/zdj%C4%99cia/292F7B8A-9047-4C9D-B102-F34AC6C0D3D8.JPG',
@@ -31,7 +32,7 @@ const PHOTOS = [
 ];
 
 // ============================================================
-//  SLIDER
+//  GALERIA — slider (translate)
 // ============================================================
 let currentSlide = 0;
 let sliderInterval = null;
@@ -44,46 +45,69 @@ function initSlider() {
   // Build slides
   PHOTOS.forEach((src, i) => {
     const slide = document.createElement('div');
-    slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
+    slide.className = 'gallery-slide';
     slide.style.backgroundImage = `url('${src}')`;
     sliderEl.appendChild(slide);
 
-    const dot = document.createElement('button');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Zdjęcie ${i + 1}`);
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsEl.appendChild(dot);
+    // Dots — max 10 widocznych
+    if (i < 10) {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Zdjęcie ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsEl.appendChild(dot);
+    }
   });
 
+  goToSlide(0);
   startSlider();
+
+  // Strzałki
+  document.getElementById('slidePrev')?.addEventListener('click', () => {
+    clearInterval(sliderInterval);
+    goToSlide(currentSlide - 1);
+    startSlider();
+  });
+  document.getElementById('slideNext')?.addEventListener('click', () => {
+    clearInterval(sliderInterval);
+    goToSlide(currentSlide + 1);
+    startSlider();
+  });
+
+  // Pauza po najechaniu
+  const wrap = sliderEl.closest('.gallery-slider-wrap');
+  if (wrap) {
+    wrap.addEventListener('mouseenter', () => clearInterval(sliderInterval));
+    wrap.addEventListener('mouseleave', startSlider);
+  }
+
+  // Swipe touch
+  let touchX = 0;
+  sliderEl.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  sliderEl.addEventListener('touchend',   e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goToSlide(currentSlide + (diff > 0 ? 1 : -1));
+  });
 }
 
 function goToSlide(index) {
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots   = document.querySelectorAll('.dot');
-  if (!slides.length) return;
+  const dots = document.querySelectorAll('#sliderDots .dot');
 
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
+  if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
 
   currentSlide = (index + PHOTOS.length) % PHOTOS.length;
 
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
+  const sliderEl = document.getElementById('heroSlider');
+  if (sliderEl) sliderEl.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+  const dotIndex = Math.min(currentSlide, dots.length - 1);
+  if (dots[dotIndex]) dots[dotIndex].classList.add('active');
 }
 
 function startSlider() {
+  clearInterval(sliderInterval);
   sliderInterval = setInterval(() => goToSlide(currentSlide + 1), 4500);
 }
-
-// Pause on hover
-document.addEventListener('DOMContentLoaded', () => {
-  const hero = document.getElementById('hero');
-  if (hero) {
-    hero.addEventListener('mouseenter', () => clearInterval(sliderInterval));
-    hero.addEventListener('mouseleave', startSlider);
-  }
-});
 
 // ============================================================
 //  COUNTDOWN

@@ -84,7 +84,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
-   HERO
+   HERO — statyczne tło (gradient)
    ============================================================ */
 #hero {
   position: relative;
@@ -94,25 +94,8 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  background: radial-gradient(ellipse at 60% 40%, #1f1a10 0%, #0c0c0c 70%);
 }
-
-/* Slider */
-.hero-slider {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-.hero-slide.active { opacity: 1; }
 
 /* Gradient overlay */
 .hero-overlay {
@@ -298,10 +281,27 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
-   ZAPROSZENIE
+   ZAPROSZENIE — 2 kolumny
    ============================================================ */
-#zaproszenie .container {
-  max-width: 760px;
+.invite-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.invite-col-text { max-width: 660px; }
+
+.invite-col-img {
+  flex-shrink: 0;
+}
+
+.invite-photo {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
 }
 
 .invite-text p {
@@ -1007,4 +1007,155 @@ footer p:first-child {
 @media (max-width: 480px) {
   .hero-title { font-size: clamp(2.8rem, 16vw, 4rem); }
   .admin-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   GALERIA — standalone slider
+   ============================================================ */
+.gallery-slider-wrap {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.gallery-slider {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.gallery-slide {
+  flex: 0 0 100%;
+  aspect-ratio: 16 / 8;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Arrow buttons */
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(12, 12, 12, 0.7);
+  color: var(--text);
+  border: 1px solid var(--border);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  backdrop-filter: blur(6px);
+}
+
+.gallery-btn:hover {
+  background: var(--gold);
+  color: #0c0c0c;
+  border-color: var(--gold);
+}
+
+.gallery-btn-prev { left: 1.25rem; }
+.gallery-btn-next { right: 1.25rem; }
+
+#galeria .slider-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+/* ============================================================
+   FUNDACJA BIEGUSIEM
+   ============================================================ */
+.fundacja-card {
+  background: linear-gradient(135deg, #1a1a0d 0%, #1c1c1c 60%, #0f1a0f 100%);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.fundacja-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(201, 168, 76, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.fundacja-inner {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: flex-start;
+  position: relative;
+}
+
+.fundacja-icon {
+  font-size: clamp(3rem, 6vw, 5rem);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.fundacja-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.fundacja-text p {
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.fundacja-text strong {
+  color: var(--gold);
+}
+
+.fundacja-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+
+/* Responsywność nowych sekcji */
+@media (max-width: 900px) {
+  .invite-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .invite-col-img {
+    order: -1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .fundacja-inner {
+    flex-direction: column;
+  }
+
+  .gallery-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .fundacja-buttons {
+    flex-direction: column;
+  }
+
+  .fundacja-buttons .btn {
+    justify-content: center;
+  }
 }
