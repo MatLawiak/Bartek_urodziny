@@ -84,7 +84,7 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================================
-   HERO — statyczne tło (gradient)
+   HERO — slider tło
    ============================================================ */
 #hero {
   position: relative;
@@ -94,7 +94,31 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background: radial-gradient(ellipse at 60% 40%, #1f1a10 0%, #0c0c0c 70%);
+}
+
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.hero-slide.active { opacity: 1; }
+
+#hero .slider-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
 }
 
 /* Gradient overlay */

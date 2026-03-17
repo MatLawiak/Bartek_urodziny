@@ -32,7 +32,7 @@ const PHOTOS = [
 ];
 
 // ============================================================
-//  GALERIA — slider (translate)
+//  HERO — slider (crossfade)
 // ============================================================
 let currentSlide = 0;
 let sliderInterval = null;
@@ -42,66 +42,41 @@ function initSlider() {
   const dotsEl   = document.getElementById('sliderDots');
   if (!sliderEl || !dotsEl) return;
 
-  // Build slides
   PHOTOS.forEach((src, i) => {
     const slide = document.createElement('div');
-    slide.className = 'gallery-slide';
+    slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
     slide.style.backgroundImage = `url('${src}')`;
     sliderEl.appendChild(slide);
 
-    // Dots — max 10 widocznych
-    if (i < 10) {
-      const dot = document.createElement('button');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Zdjęcie ${i + 1}`);
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsEl.appendChild(dot);
-    }
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Zdjęcie ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsEl.appendChild(dot);
   });
 
-  goToSlide(0);
   startSlider();
 
-  // Strzałki
-  document.getElementById('slidePrev')?.addEventListener('click', () => {
-    clearInterval(sliderInterval);
-    goToSlide(currentSlide - 1);
-    startSlider();
-  });
-  document.getElementById('slideNext')?.addEventListener('click', () => {
-    clearInterval(sliderInterval);
-    goToSlide(currentSlide + 1);
-    startSlider();
-  });
-
   // Pauza po najechaniu
-  const wrap = sliderEl.closest('.gallery-slider-wrap');
-  if (wrap) {
-    wrap.addEventListener('mouseenter', () => clearInterval(sliderInterval));
-    wrap.addEventListener('mouseleave', startSlider);
+  const hero = document.getElementById('hero');
+  if (hero) {
+    hero.addEventListener('mouseenter', () => clearInterval(sliderInterval));
+    hero.addEventListener('mouseleave', startSlider);
   }
-
-  // Swipe touch
-  let touchX = 0;
-  sliderEl.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-  sliderEl.addEventListener('touchend',   e => {
-    const diff = touchX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goToSlide(currentSlide + (diff > 0 ? 1 : -1));
-  });
 }
 
 function goToSlide(index) {
-  const dots = document.querySelectorAll('#sliderDots .dot');
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('#sliderDots .dot');
+  if (!slides.length) return;
 
+  slides[currentSlide].classList.remove('active');
   if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
 
   currentSlide = (index + PHOTOS.length) % PHOTOS.length;
 
-  const sliderEl = document.getElementById('heroSlider');
-  if (sliderEl) sliderEl.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-  const dotIndex = Math.min(currentSlide, dots.length - 1);
-  if (dots[dotIndex]) dots[dotIndex].classList.add('active');
+  slides[currentSlide].classList.add('active');
+  if (dots[currentSlide]) dots[currentSlide].classList.add('active');
 }
 
 function startSlider() {
