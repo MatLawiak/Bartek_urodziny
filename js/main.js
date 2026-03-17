@@ -4,7 +4,6 @@
 
 /* ---- PHOTOS (slider) — Gemini jako pierwsze ---- */
 const PHOTOS = [
-  'zdj%C4%99cia/zdj%C4%99cia/Gemini_Generated_Image_eag3kveag3kveag3.png',
   'zdj%C4%99cia/zdj%C4%99cia/IMG_0407.JPG',
   'zdj%C4%99cia/zdj%C4%99cia/85A4FE13-3A05-4E43-94B3-47E72FED9B75.JPG',
   'zdj%C4%99cia/zdj%C4%99cia/292F7B8A-9047-4C9D-B102-F34AC6C0D3D8.JPG',
