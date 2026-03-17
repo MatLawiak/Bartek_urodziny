@@ -1121,10 +1121,12 @@ footer p:first-child {
   position: relative;
 }
 
-.fundacja-icon {
-  font-size: clamp(3rem, 6vw, 5rem);
+.fundacja-logo {
+  width: clamp(80px, 12vw, 140px);
   flex-shrink: 0;
-  line-height: 1;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: brightness(1.1);
 }
 
 .fundacja-title {
