@@ -14,6 +14,23 @@
 <body>
 
 <!-- ============================================================
+     LOGIN GATE
+     ============================================================ -->
+<div id="loginGate" class="login-gate">
+  <div class="login-box">
+    <div class="login-emoji">🎉</div>
+    <h2 class="login-title">Strefa VIP</h2>
+    <p class="login-question">Żeby dostać się na imprezę, napisz ile lat kończą Natalia i Bartek?</p>
+    <div class="login-form">
+      <input type="number" id="loginInput" class="login-input" placeholder="..." min="1" max="99" />
+      <button id="loginBtn" class="login-btn">Wchodzę 🚀</button>
+    </div>
+    <p id="loginError" class="login-error hidden">Hmm, spróbuj jeszcze raz... 🤔</p>
+  </div>
+</div>
+
+
+<!-- ============================================================
      HERO — slider tło
      ============================================================ -->
 <section id="hero">
@@ -27,8 +44,8 @@
 
     <h1 class="hero-title">
       URODZINY<br>
-      BARTKA<br>
-      <em>&amp; Natalii</em>
+      <em>Natalii</em><br>
+      <em>&amp; Bartka</em>
     </h1>
 
     <div class="hero-date-bar">
@@ -92,31 +109,29 @@
       <!-- Lewa kolumna: tekst -->
       <div class="invite-col-text">
         <div class="section-label reveal">Zaproszenie</div>
-        <h2 class="section-title reveal reveal-delay-1">No nie dało się ukryć.</h2>
+        <h2 class="section-title reveal reveal-delay-1">Serdecznie zapraszamy na naszą 40-stkę!</h2>
 
         <div class="invite-text">
           <p class="reveal reveal-delay-1">
-            Bartek przez całe życie z mistrzowską finezją omijał okrągłe urodziny.
-            Natalia miała dokładnie ten sam plan. Tyle że obydwojgu wyszło to
-            z jednakową gracją — czyli zupełnie nie wyszło.
-            <strong>Czterdziestki nie da się przemilczeć.</strong>
+            Przez całe życie z mistrzowską finezją omijaliśmy okrągłe urodziny.
+            Plan był prosty: przemknąć bokiem, bez rozgłosu, bez zamieszania.
           </p>
           <p class="reveal reveal-delay-2">
-            Więc zamiast chować się każde pod swoim dywanem, postanowili
-            świętować razem — <strong>z pompą, z Wami i z dobrym winem</strong>
-            (bez selekcji — każdy mile widziany, każdy kieliszek zaliczony).
+            Postanowiliśmy zrobić coś znacznie rozsądniejszego:
+            świętować razem. <strong>Z pompą, z Wami i… bez dzieci</strong> 🙂
           </p>
           <p class="reveal reveal-delay-2">
-            Przyjdźcie na wieczór, który nie zostanie zapamiętany jako
-            <em>"ta impreza z czterdziestką"</em>, ale jako
-            <strong>ta impreza roku</strong>.
-            Bo jeśli nie — Bartek i Natalia będą to wyciągać przez
-            następne czterdzieści lat. A to mogłoby być nużące.
+            Zapraszamy Was na wieczór, który mamy nadzieję zapisze się jako
+            <strong>Impreza Roku</strong>.
+            Liczymy, że spędzicie ten czas razem z nami.
+          </p>
+          <p class="reveal reveal-delay-3">
+            <strong>Obecność obowiązkowa</strong> 😉
           </p>
         </div>
 
         <div class="invite-signature reveal reveal-delay-3">
-          — Zapraszają Bartek &amp; Natalia 🥂
+          — Do zobaczenia, Natalia &amp; Bartek 🥂
         </div>
       </div>
 
@@ -141,7 +156,7 @@
   <div class="container">
 
     <div class="section-label reveal">Szczegóły</div>
-    <h2 class="section-title reveal reveal-delay-1">Gdzie, kiedy i&nbsp;po co?</h2>
+    <h2 class="section-title reveal reveal-delay-1">Gdzie i&nbsp;kiedy?</h2>
 
     <div class="details-grid">
 
@@ -155,15 +170,14 @@
       <div class="detail-card featured reveal reveal-delay-2">
         <div class="detail-icon">🏛️</div>
         <h3>Gdzie</h3>
-        <div class="detail-main">Sala Lux Korona</div>
+        <div class="detail-main">Salonty</div>
         <div class="detail-sub">
-          Beton Haus w Parku Wilsona<br>
-          ul. Śniadeckich 12B, Poznań<br>
-          <br>
-          <a href="https://betonhaus.wparkuwilsona.pl" target="_blank" rel="noopener"
-             style="color: var(--gold); text-decoration: underline; font-size: 0.85rem;">
-            betonhaus.wparkuwilsona.pl ↗
-          </a>
+          Piekary 7, 61-823 Poznań<br>
+          <img
+            src="zdj%C4%99cia/zdj%C4%99cia/salonty_txt_mainlogo_2022.png"
+            alt="Salonty"
+            class="venue-logo"
+          />
         </div>
       </div>
 
@@ -172,7 +186,7 @@
         <h3>Parking</h3>
         <div class="detail-main">Bez stresu</div>
         <div class="detail-sub">
-          Bezpłatny parking przy ul. Śniadeckich i wokół Parku Wilsona.
+          Parking dostępny w okolicy.<br>
           Możliwość podjazdu pod wejście.<br><br>
           <strong style="color: var(--gold-light);">Planujecie pić?</strong><br>
           Uber/Bolt to mądry wybór&nbsp;😉
@@ -191,16 +205,16 @@
   <div class="container">
 
     <div class="section-label reveal">Dojazd</div>
-    <h2 class="section-title reveal reveal-delay-1">Jak tu dotrzeć?</h2>
+    <h2 class="section-title reveal reveal-delay-1">Jak dotrzeć?</h2>
     <p class="section-intro reveal reveal-delay-1">
-      Beton Haus mieści się przy ul. Śniadeckich 12B w Poznaniu, w Parku Wilsona.
-      Poniżej mapa — zero wymówek&nbsp;🗺️
+      Salonty mieści się przy ul. Piekary 7 w Poznaniu.
+      Poniżej mapa — zero wymówek.
     </p>
 
     <div class="map-wrapper reveal reveal-delay-2">
       <iframe
-        src="https://maps.google.com/maps?q=%C5%9Aniadeckich+12B+Pozna%C5%84&output=embed&hl=pl&z=16"
-        title="Beton Haus — ul. Śniadeckich 12B, Poznań"
+        src="https://maps.google.com/maps?q=Piekary+7+Pozna%C5%84&output=embed&hl=pl&z=16"
+        title="Salonty — Piekary 7, Poznań"
         allowfullscreen
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
@@ -208,12 +222,12 @@
     </div>
 
     <div class="map-buttons reveal reveal-delay-3">
-      <a href="https://www.google.com/maps/search/%C5%9Aniadeckich+12B+Pozna%C5%84"
+      <a href="https://www.google.com/maps/search/Piekary+7+Pozna%C5%84"
          target="_blank" rel="noopener"
          class="btn btn-primary">
         🗺️ Nawiguj do miejsca
       </a>
-      <a href="https://www.google.com/maps/dir//%C5%9Aniadeckich+12B+Pozna%C5%84"
+      <a href="https://www.google.com/maps/dir//Piekary+7+Pozna%C5%84"
          target="_blank" rel="noopener"
          class="btn btn-secondary">
         📍 Pobierz lokalizację
@@ -347,7 +361,7 @@
      ============================================================ -->
 <footer>
   <p>Zrobione z <span class="footer-heart">♥</span> — Bartek &amp; Natalia 2026</p>
-  <p>8 maja 2026 · Beton Haus w Parku Wilsona · ul. Śniadeckich 12B, Poznań</p>
+  <p>8 maja 2026 · Salonty · Piekary 7, 61-823 Poznań</p>
   <p style="margin-top: 1rem; font-size: 0.78rem;">
     Strona prywatna — dostęp wyłącznie dla zaproszonych gości
   </p>

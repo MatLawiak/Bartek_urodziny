@@ -31,6 +31,46 @@ const PHOTOS = [
 ];
 
 // ============================================================
+//  LOGIN GATE
+// ============================================================
+function initLogin() {
+  const gate = document.getElementById('loginGate');
+  if (!gate) return;
+
+  if (sessionStorage.getItem('bartek40_auth') === 'ok') {
+    gate.style.display = 'none';
+    return;
+  }
+
+  document.body.style.overflow = 'hidden';
+
+  const input = document.getElementById('loginInput');
+  const btn   = document.getElementById('loginBtn');
+  const err   = document.getElementById('loginError');
+
+  function attempt() {
+    if (input.value.trim() === '40') {
+      sessionStorage.setItem('bartek40_auth', 'ok');
+      gate.classList.add('login-fade-out');
+      setTimeout(() => {
+        gate.style.display = 'none';
+        document.body.style.overflow = '';
+        entryConfetti();
+      }, 600);
+    } else {
+      err.classList.remove('hidden');
+      input.value = '';
+      input.focus();
+      setTimeout(() => err.classList.add('hidden'), 3000);
+    }
+  }
+
+  btn.addEventListener('click', attempt);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') attempt(); });
+  input.focus();
+}
+
+// ============================================================
 //  HERO — slider (crossfade)
 // ============================================================
 let currentSlide = 0;
@@ -290,10 +330,12 @@ function initReveal() {
 //  INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
+  const alreadyAuth = sessionStorage.getItem('bartek40_auth') === 'ok';
+  initLogin();
   initSlider();
   initCountdown();
   initRSVP();
   initReveal();
   fetchCounter();
-  entryConfetti();
+  if (alreadyAuth) entryConfetti();
 });
