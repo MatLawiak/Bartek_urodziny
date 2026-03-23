@@ -197,16 +197,16 @@ function initRSVP() {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
-          firstName:  data.firstName.trim(),
-          lastName:   data.lastName.trim(),
-          companions: parseInt(data.companions) || 0,
+          firstName: data.firstName.trim(),
+          lastName:  data.lastName.trim(),
+          punctual:  data.punctual || 'nie podano',
         }),
       });
 
       if (!res.ok) throw new Error('HTTP ' + res.status);
 
       showMessage(msgEl, 'success',
-        `🎉 Hurra, ${data.firstName}! Bartek i Natalia już się cieszą. Do zobaczenia 8 maja!`);
+        `🎉 Hurra, ${data.firstName}! Natalia i Bartek już się cieszą. Do zobaczenia 8 maja!`);
       form.reset();
       fireConfetti();
       fetchCounter(); // odśwież licznik
@@ -236,17 +236,13 @@ async function fetchCounter() {
   const el = document.getElementById('guestCount');
   if (!el) return;
 
-  if (!CONFIG.BACKEND_URL) {
-    el.textContent = '?';
-    document.querySelector('.counter-sub').textContent =
-      'Licznik ruszy po skonfigurowaniu backendu 🔧';
-    return;
-  }
+  const url = CONFIG.COUNT_URL || CONFIG.BACKEND_URL;
+  if (!url) { el.textContent = '?'; return; }
 
   try {
-    const res  = await fetch(CONFIG.BACKEND_URL + '?action=count');
+    const res  = await fetch(url);
     const json = await res.json();
-    animateCounter(el, json.people || 0);
+    animateCounter(el, json.people || json.rsvps || 0);
   } catch {
     el.textContent = '?';
   }
