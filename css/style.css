@@ -1291,3 +1291,45 @@ footer p:first-child {
   opacity: 0.85;
   filter: brightness(1.15);
 }
+
+/* ============================================================
+   RSVP — punktualność (tak/nie)
+   ============================================================ */
+.punctual-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.punctual-option {
+  flex: 1;
+  cursor: pointer;
+}
+
+.punctual-option input[type="radio"] {
+  display: none;
+}
+
+.punctual-option span {
+  display: block;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.punctual-option input[type="radio"]:checked + span {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.punctual-option:hover span {
+  border-color: var(--gold);
+  color: var(--text);
+}
