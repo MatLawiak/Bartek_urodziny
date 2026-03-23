@@ -32,7 +32,7 @@
       "typeVersion": 2.1,
       "position": [720, 280],
       "parameters": {
-        "fromEmail": "rsvp@imprezaroku.eu",
+        "fromEmail": "twistedpixeldocs@gmail.com",
         "toEmail": "bartosz.jatczak@gmail.com",
         "subject": "=🎉 RSVP #{{ $json.total }}: {{ $json.entry.firstName }} {{ $json.entry.lastName }} potwierdza!",
         "text": "=NOWE POTWIERDZENIE OBECNOŚCI\n────────────────────────────────\n\nImię:         {{ $json.entry.firstName }}\nNazwisko:     {{ $json.entry.lastName }}\nPunktualnie:  {{ $json.entry.punctual }}\nData:         {{ $json.entry.timestamp }}\n\n────────────────────────────────\n✅ Łączna liczba gości: {{ $json.total }}\n────────────────────────────────\n\nPozdrowienia,\nStrona imprezaroku.eu",
