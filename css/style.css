@@ -582,6 +582,33 @@ h1, h2, h3, h4 {
   color: #70e090;
 }
 
+.btn-gcal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1.4rem;
+  background: var(--gold);
+  color: #0c0c0c;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: var(--radius);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.btn-gcal svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-gcal:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
+}
+
 .form-message.error {
   background: rgba(192, 48, 48, 0.12);
   border: 1px solid rgba(192, 48, 48, 0.3);

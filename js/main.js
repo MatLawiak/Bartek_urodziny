@@ -159,6 +159,26 @@ function initCountdown() {
 // ============================================================
 //  RSVP FORM
 // ============================================================
+function buildGCalUrl() {
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    '&text=Urodziny+Bartka+%26+Natalii+40%2B+%F0%9F%8E%89' +
+    '&dates=20260509T170000Z/20260510T000000Z' +
+    '&details=Impreza+roku%21+%F0%9F%A5%82+Dres+code%3A+elegancko.' +
+    '&location=Salonty%2C+Nowowiejskiego+8%2C+Pozna%C5%84';
+}
+
+function showCalendarButton(msgEl, firstName) {
+  msgEl.className  = 'form-message success';
+  msgEl.innerHTML  =
+    `<div>🎉 Hurra, <strong>${firstName}</strong>! Natalia i Bartek już się cieszą. Do zobaczenia 9 maja!</div>` +
+    `<a href="${buildGCalUrl()}" target="_blank" rel="noopener" class="btn-gcal">` +
+    `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>` +
+    `Dodaj do Google Calendar` +
+    `</a>`;
+  msgEl.style.display = 'block';
+  msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
 function initRSVP() {
   const form = document.getElementById('rsvpForm');
   if (!form) return;
@@ -180,10 +200,8 @@ function initRSVP() {
     btn.textContent = 'Wysyłam... 🚀';
 
     if (!CONFIG.BACKEND_URL) {
-      // Demo mode — brak backendu
       setTimeout(() => {
-        showMessage(msgEl, 'success',
-          `🎉 Świetnie, ${data.firstName}! Twoja obecność została odnotowana. Do zobaczenia 8 maja!`);
+        showCalendarButton(msgEl, data.firstName.trim());
         form.reset();
         btn.disabled    = false;
         btn.textContent = 'Potwierdzam obecność 🎉';
@@ -205,11 +223,10 @@ function initRSVP() {
 
       if (!res.ok) throw new Error('HTTP ' + res.status);
 
-      showMessage(msgEl, 'success',
-        `🎉 Hurra, ${data.firstName}! Natalia i Bartek już się cieszą. Do zobaczenia 8 maja!`);
+      showCalendarButton(msgEl, data.firstName.trim());
       form.reset();
       fireConfetti();
-      fetchCounter(); // odśwież licznik
+      fetchCounter();
 
     } catch (err) {
       showMessage(msgEl, 'error',
